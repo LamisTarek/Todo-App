@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import TodoForm from "@/components/TodoForm";
-import toast, { Toaster } from "react-hot-toast"; // import toast
+import toast, { Toaster } from "react-hot-toast"; 
 
 export default function AddTodoPage() {
   const router = useRouter();

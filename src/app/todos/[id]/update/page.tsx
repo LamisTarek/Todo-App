@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState, use } from "react";
 import TodoForm from "@/components/TodoForm";
-import toast, { Toaster } from "react-hot-toast"; // import toast
+import toast, { Toaster } from "react-hot-toast"; 
 
 export default function EditTodoPage({
   params,

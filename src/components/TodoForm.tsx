@@ -18,7 +18,6 @@ export default function TodoForm({
   const [title, setTitle] = useState(initialTitle);
   const [completed, setCompleted] = useState(initialCompleted);
 
-  // لو عايزة تعملي إعادة ضبط عند تغير الـ props (مفيد في edit)
   useEffect(() => {
     setTitle(initialTitle);
     setCompleted(initialCompleted);

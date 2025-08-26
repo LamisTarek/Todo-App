@@ -52,7 +52,6 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
         <p className="mt-5 text-gray-500 text-center">Loading...</p>
       )}
 
-      {/* Back Button */}
       <div className="mt-8 text-center">
         <Link
           href="/todos"

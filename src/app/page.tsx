@@ -22,10 +22,7 @@ export default function HomePage() {
           View My Todos
         </Link>
       </div>
-
-      {/* <div className="absolute top-0 left-0 w-72 h-72 bg-purple-300 opacity-30 rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-300 opacity-30 rounded-full translate-x-1/2 translate-y-1/2 animate-pulse"></div> */}
-
+      
       <footer className="mt-12 text-gray-200 text-sm text-center z-10">
         &copy; {new Date().getFullYear()} Todo List App. All rights reserved.
       </footer>

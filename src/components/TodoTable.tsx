@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import toast, { Toaster } from "react-hot-toast"; // import toast
+import toast, { Toaster } from "react-hot-toast"; 
 
 interface Todo {
   id: number;
@@ -14,8 +14,8 @@ export default function TodoTable() {
   const router = useRouter();
   const [todos, setTodos] = useState<Todo[]>([]);
   const [todoToDelete, setTodoToDelete] = useState<Todo | null>(null);
-  const [loading, setLoading] = useState<boolean>(true); // loading state for fetch
-
+  const [loading, setLoading] = useState<boolean>(true); 
+  
   const fetchTodos = async () => {
     setLoading(true);
     const res = await fetch(
