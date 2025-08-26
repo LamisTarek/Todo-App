@@ -58,6 +58,7 @@ export default function TodoTable() {
         },
         body: JSON.stringify({ completed: !completed }),
       });
+        toast.success("Todo changed status successfully!");
     } catch (error) {
       console.error("Error updating todo:", error);
     }
