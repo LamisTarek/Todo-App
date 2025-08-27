@@ -1,11 +1,12 @@
 import EditTodoForm from "./editTodoForm";
-
+interface PageProps {
+    params: Promise<{ id: string }>;
+  }
 export default async function EditTodoPage({
   params,
-}: {
-    params: { id: string };
-}) {
+}: PageProps) {
     const { id } = await params;
+    
     const res = await fetch(
     `https://jsonplaceholder.typicode.com/todos/${id}`,
     { cache: "no-store" }
