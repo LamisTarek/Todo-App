@@ -12,7 +12,10 @@ interface Todo {
 export default function EditTodoForm({ todo }: { todo: Todo }) {
   const router = useRouter();
 
-  const handleSubmit = async (updatedTodo: { title: string; completed: boolean }) => {
+  const handleSubmit = async (updatedTodo: {
+    title: string;
+    completed: boolean;
+  }) => {
     await fetch(`https://jsonplaceholder.typicode.com/todos/${todo.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

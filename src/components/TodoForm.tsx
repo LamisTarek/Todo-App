@@ -5,7 +5,10 @@ import { useState } from "react";
 type TodoFormProps = {
   initialTitle?: string;
   initialCompleted?: boolean;
-  onSubmit: (todo: { title: string; completed: boolean }) => Promise<void> | void;
+  onSubmit: (todo: {
+    title: string;
+    completed: boolean;
+  }) => Promise<void> | void;
   buttonLabel?: string;
 };
 
@@ -18,14 +21,16 @@ export default function TodoForm({
   const [title, setTitle] = useState(initialTitle);
   const [completed, setCompleted] = useState(initialCompleted);
 
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await onSubmit({ title, completed });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-lg shadow-md w-1/2 justify-center mx-auto mt-10">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4 bg-white p-6 rounded-lg shadow-md w-1/2 justify-center mx-auto mt-10"
+    >
       <div>
         <label className="block font-medium mb-2">Title</label>
         <input

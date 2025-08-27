@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import TodoForm from "@/components/TodoForm";
-import toast, { Toaster } from "react-hot-toast"; 
+import toast, { Toaster } from "react-hot-toast";
 
 export default function AddTodoPage() {
   const router = useRouter();
@@ -15,10 +15,6 @@ export default function AddTodoPage() {
     });
 
     if (res.ok) {
-       
-        
-            const newTodo = await res.json();
-            setTodos((prev) => [...prev, newTodo]); // optimistic update
       toast.success("Todo added successfully!");
       router.push("/todos");
     } else {
@@ -29,7 +25,9 @@ export default function AddTodoPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6 text-center mt-10">Add New Todo</h1>
+      <h1 className="text-2xl font-bold mb-6 text-center mt-10">
+        Add New Todo
+      </h1>
       <TodoForm onSubmit={handleAdd} buttonLabel="Add Todo" />
       <Toaster position="top-right" />
     </div>

@@ -8,22 +8,21 @@ interface Todo {
 }
 
 interface PageProps {
-    params: { id: string };
-  }
+  params: { id: string };
+}
 
 export default async function Page({ params }: PageProps) {
-
-
-  const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${params.id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${params.id}`,
+    {
+      cache: "no-store",
+    }
+  );
   const todo: Todo = await res.json();
 
   return (
     <div className="max-w-lg mx-auto mt-10 p-6 rounded-lg shadow-lg">
-      <h1 className="text-4xl font-bold text-gray-800 mb-6">
-        Todo Detail
-      </h1>
+      <h1 className="text-4xl font-bold text-gray-800 mb-6">Todo Detail</h1>
 
       {todo ? (
         <div className="space-y-4">
