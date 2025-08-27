@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 type TodoFormProps = {
   initialTitle?: string;
@@ -18,10 +18,6 @@ export default function TodoForm({
   const [title, setTitle] = useState(initialTitle);
   const [completed, setCompleted] = useState(initialCompleted);
 
-  useEffect(() => {
-    setTitle(initialTitle);
-    setCompleted(initialCompleted);
-  }, [initialTitle, initialCompleted]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +25,7 @@ export default function TodoForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-lg shadow-md w-1/2 justify-center mx-auto mt-10">
       <div>
         <label className="block font-medium mb-2">Title</label>
         <input

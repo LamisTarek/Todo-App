@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import toast, { Toaster } from "react-hot-toast"; 
+import toast, { Toaster } from "react-hot-toast";
 
 interface Todo {
   id: number;
@@ -10,32 +10,21 @@ interface Todo {
   completed: boolean;
 }
 
-export default function TodoTable() {
-  const router = useRouter();
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [todoToDelete, setTodoToDelete] = useState<Todo | null>(null);
-  const [loading, setLoading] = useState<boolean>(true); 
-  
-  const fetchTodos = async () => {
-    setLoading(true);
-    const res = await fetch(
-      "https://jsonplaceholder.typicode.com/todos?_limit=10"
-    );
-    const data = await res.json();
-    setTodos(data);
-    setLoading(false);
-  };
+interface TodoTableProps {
+  todos: Todo[];
+}
 
-  useEffect(() => {
-    fetchTodos();
-  }, []);
+export default function TodoTable({ todos: initialTodos }: TodoTableProps) {
+  const router = useRouter();
+  const [todos, setTodos] = useState<Todo[]>(initialTodos);
+  const [todoToDelete, setTodoToDelete] = useState<Todo | null>(null);
 
   const viewTodo = (id: number) => {
     router.push(`/todos/${id}`);
   };
 
   const editTodo = (id: number) => {
-    router.push(`/todos/${id}/update`);
+    router.push(`/todos/${id}/edit`);
   };
 
   const deleteTodo = async (id: number) => {
@@ -58,7 +47,7 @@ export default function TodoTable() {
         },
         body: JSON.stringify({ completed: !completed }),
       });
-        toast.success("Todo changed status successfully!");
+      toast.success("Todo changed status successfully!");
     } catch (error) {
       console.error("Error updating todo:", error);
     }
@@ -74,7 +63,6 @@ export default function TodoTable() {
 
   return (
     <div className="container mx-auto text-center my-5">
-      <h1 className="text-center text-2xl font-bold mb-4">ToDo App</h1>
       <div className="flex justify-center mb-4">
         <Link
           href="/todos/add"
@@ -83,16 +71,10 @@ export default function TodoTable() {
           ADD NEW TASK +
         </Link>
       </div>
-      {loading && (
-        <div className="py-20 flex justify-center">
-          <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16"></div>
-        </div>
-      )}
 
-      {!loading && todos.length === 0 && (
+      {todos.length === 0 ? (
         <p className="text-gray-500 py-20 text-lg">No data found</p>
-      )}
-      {!loading && todos.length > 0 && (
+      ) : (
         <table className="mt-10 border border-gray-300 mx-auto w-full ">
           <thead>
             <tr className="bg-gray-200 text-left">
@@ -167,7 +149,7 @@ export default function TodoTable() {
           </div>
         </div>
       )}
-    <Toaster position="top-right" />
+      <Toaster position="top-right" />
     </div>
   );
 }

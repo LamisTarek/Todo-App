@@ -15,6 +15,10 @@ export default function AddTodoPage() {
     });
 
     if (res.ok) {
+       
+        
+            const newTodo = await res.json();
+            setTodos((prev) => [...prev, newTodo]); // optimistic update
       toast.success("Todo added successfully!");
       router.push("/todos");
     } else {
@@ -24,8 +28,8 @@ export default function AddTodoPage() {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 bg-white p-6 rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold mb-6">Add New Todo</h1>
+    <div>
+      <h1 className="text-2xl font-bold mb-6 text-center mt-10">Add New Todo</h1>
       <TodoForm onSubmit={handleAdd} buttonLabel="Add Todo" />
       <Toaster position="top-right" />
     </div>

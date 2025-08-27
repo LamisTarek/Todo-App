@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useState, use } from "react";
+import React from "react";
 import Link from "next/link";
 
 interface Todo {
@@ -8,20 +7,17 @@ interface Todo {
   completed: boolean;
 }
 
-export default function Page({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+interface PageProps {
+    params: { id: string };
+  }
 
-  const [todo, setTodo] = useState<Todo | null>(null);
+export default async function Page({ params }: PageProps) {
 
-  const fetchTodoDetail = async () => {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`);
-    const data = await res.json();
-    setTodo(data);
-  };
 
-  useEffect(() => {
-    fetchTodoDetail();
-  }, [id]);
+  const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${params.id}`, {
+    cache: "no-store",
+  });
+  const todo: Todo = await res.json();
 
   return (
     <div className="max-w-lg mx-auto mt-10 p-6 rounded-lg shadow-lg">
