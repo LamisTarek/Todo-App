@@ -7,13 +7,15 @@ interface Todo {
   completed: boolean;
 }
 
-interface PageProps {
-  params: { id: string };
-}
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
 
-export default async function Page({ params }: PageProps) {
   const res = await fetch(
-    `https://68aef553b91dfcdd62badf38.mockapi.io/tasks/${params.id}`,
+    `https://68aef553b91dfcdd62badf38.mockapi.io/tasks/${id}`,
     {
       cache: "no-store",
     }

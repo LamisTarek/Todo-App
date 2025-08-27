@@ -3,7 +3,7 @@ import EditTodoForm from "./editTodoForm";
 export default async function EditTodoPage({
   params,
 }: {
-  params: { id: string };
+    params: { id: string };
 }) {
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/todos/${params.id}`,
