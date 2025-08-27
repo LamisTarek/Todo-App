@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type TodoFormProps = {
   initialTitle?: string;
@@ -20,6 +20,11 @@ export default function TodoForm({
 }: TodoFormProps) {
   const [title, setTitle] = useState(initialTitle);
   const [completed, setCompleted] = useState(initialCompleted);
+
+  useEffect(() => {
+    setCompleted(initialCompleted ?? false);
+  }, [initialCompleted]);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

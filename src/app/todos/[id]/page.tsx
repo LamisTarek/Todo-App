@@ -13,12 +13,13 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
   const res = await fetch(
-    `https://jsonplaceholder.typicode.com/todos/${params.id}`,
+    `https://68aef553b91dfcdd62badf38.mockapi.io/tasks/${params.id}`,
     {
       cache: "no-store",
     }
   );
   const todo: Todo = await res.json();
+  console.log(todo);
 
   return (
     <div className="max-w-lg mx-auto mt-10 p-6 rounded-lg shadow-lg">

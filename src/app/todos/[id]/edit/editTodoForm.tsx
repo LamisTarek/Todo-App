@@ -16,7 +16,7 @@ export default function EditTodoForm({ todo }: { todo: Todo }) {
     title: string;
     completed: boolean;
   }) => {
-    await fetch(`https://jsonplaceholder.typicode.com/todos/${todo.id}`, {
+    await fetch(`https://68aef553b91dfcdd62badf38.mockapi.io/tasks/${todo.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedTodo),

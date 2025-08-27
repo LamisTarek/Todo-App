@@ -29,7 +29,7 @@ export default function TodoTable({ todos: initialTodos }: TodoTableProps) {
 
   const deleteTodo = async (id: number) => {
     setTodos((prev) => prev.filter((t) => t.id !== id));
-    await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+    await fetch(`https://68aef553b91dfcdd62badf38.mockapi.io/tasks/${id}`, {
       method: "DELETE",
     });
   };
@@ -40,7 +40,7 @@ export default function TodoTable({ todos: initialTodos }: TodoTableProps) {
     );
 
     try {
-      await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+      await fetch(`https://68aef553b91dfcdd62badf38.mockapi.io/tasks/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -75,9 +75,9 @@ export default function TodoTable({ todos: initialTodos }: TodoTableProps) {
       {todos.length === 0 ? (
         <p className="text-gray-500 py-20 text-lg">No data found</p>
       ) : (
-        <table className="mt-10 border border-gray-300 mx-auto w-full ">
+        <table className="mt-10 border border-gray-300 mx-auto w-1/2 ">
           <thead>
-            <tr className="bg-gray-200 text-left">
+            <tr className="bg-gray-200 text-center">
               <th className="p-3">Task</th>
               <th className="p-3">Actions</th>
             </tr>
@@ -86,9 +86,9 @@ export default function TodoTable({ todos: initialTodos }: TodoTableProps) {
             {todos.map((todo) => (
               <tr
                 key={todo.id}
-                className="border-t border-gray-300  hover:bg-gray-100 cursor-pointer text-left"
+                className="border-t border-gray-300  hover:bg-gray-100 cursor-pointer text-center"
               >
-                <td className="flex p-3 gap-2 rounded-lg">
+                <td className="flex p-3 gap-2 rounded-lg text-center">
                   <input
                     type="checkbox"
                     checked={todo.completed}

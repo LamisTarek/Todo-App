@@ -8,7 +8,7 @@ export default function AddTodoPage() {
   const router = useRouter();
 
   const handleAdd = async (todo: { title: string; completed: boolean }) => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/todos", {
+    const res = await fetch("https://68aef553b91dfcdd62badf38.mockapi.io/tasks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...todo, userId: 1 }),
